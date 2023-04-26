@@ -1,0 +1,17 @@
+type Query {
+    weightEntries(userNameFilter: String!): [WeightEntryDto]
+}
+
+type WeightEntryDto {
+    id: ID
+    weight: Float!
+    fatPercentage: Float!,
+    unit: WeightUnitDto!
+    timestamp: String!
+    userName: String!
+}
+
+enum WeightUnitDto {
+    KILO_GRAM,
+    LBS
+}
