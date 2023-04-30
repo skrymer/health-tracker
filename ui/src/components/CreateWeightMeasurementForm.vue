@@ -27,18 +27,21 @@
 <script lang="ts" setup>
 import { useField, useForm } from "vee-validate";
 
+const emit = defineEmits(['saved'])
+
 const { handleSubmit } = useForm();
 
 const submit = handleSubmit((values) => {
-  fetch("/api/weight", {
+  fetch("/api/weight/measurement", {
     method: "POST",
     headers: new Headers({ "content-type": "application/json" }),
     body: JSON.stringify({
       ...values,
-      userName: "sonni.nielsen@gmail.com",
-      unit: "KILO_GRAM",
+      userName: "sonni.nielsen@gmail.com", // TODO get from user pref
+      unit: "KILO_GRAM", // TODO get from user pref
+      timestamp: values.timestamp + 'T00:00:00'
     }),
-  });
+  }).then(() => emit('saved'));
 });
 
 const weight = useField("weight");

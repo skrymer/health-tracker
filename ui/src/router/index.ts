@@ -12,9 +12,14 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
-        path: 'weight',
-        name: 'Weight',
-        component: () => import(/* webpackChunkName: "weight" */ '@/views/Weight.vue'),
+        path: 'weight/statistics',
+        name: 'WeightStatistics',
+        component: () => import(/* webpackChunkName: "weight-statistics" */ '@/views/WeightStatisticsView.vue'),
+      },
+      {
+        path: 'weight/create',
+        name: 'CreateWeightMeasurementView',
+        component: () => import(/* webpackChunkName: "create-weight-measurement" */ '@/views/CreateWeightMeasurementView.vue'),
       },
     ],
   },

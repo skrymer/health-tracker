@@ -13,7 +13,10 @@
         <v-divider></v-divider>
 
         <v-list density="compact" v-for="link in links" nav>
-          <router-link :to="link.to">
+          <router-link
+            exactActiveClass="background-color: 'green'"
+            :to="link.to"
+          >
             <v-list-item
               :prepend-icon="link.icon"
               :title="link.title"
@@ -25,7 +28,9 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-main style="height: 1000px"> <router-view /></v-main>
+      <v-main class="h-screen">
+        <router-view />
+      </v-main>
     </v-layout>
   </v-card>
 </template>
@@ -43,10 +48,16 @@ export default {
           value: "home",
         },
         {
-          to: "/weight",
-          title: "Weight",
-          icon: "mdi-weight",
-          value: "weight",
+          to: "/weight/statistics",
+          title: "Weight Statistics",
+          icon: "mdi-chart-line",
+          value: "statistics",
+        },
+        {
+          to: "/weight/create",
+          title: "Create Weight Entry",
+          icon: "mdi-plus",
+          value: "create",
         },
         {
           to: "/goals",

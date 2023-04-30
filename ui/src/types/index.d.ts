@@ -1,4 +1,4 @@
-export type WeightEntry = {
+export type WeightMeasurement = {
   weight: number,
   fatPercentage: number,
   unit: WeightUnit

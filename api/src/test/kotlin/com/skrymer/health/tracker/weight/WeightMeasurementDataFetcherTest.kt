@@ -2,9 +2,9 @@ package com.skrymer.health.tracker.weight
 
 import com.netflix.graphql.dgs.DgsQueryExecutor
 import com.netflix.graphql.dgs.autoconfig.DgsAutoConfiguration
-import com.skrymer.health.tracker.weight.domain.WeightEntry
+import com.skrymer.health.tracker.weight.domain.WeightMeasurement
 import com.skrymer.health.tracker.weight.domain.WeightUnit
-import com.skrymer.health.tracker.weight.repositories.WeightEntryRepository
+import com.skrymer.health.tracker.weight.repositories.WeightMeasurementRepository
 import com.skrymer.health.tracker.types.WeightEntryDto
 import com.skrymer.health.tracker.types.WeightUnitDto
 import org.junit.jupiter.api.Test
@@ -17,18 +17,18 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import java.time.LocalDateTime
 
 @SpringBootTest(classes = [DgsAutoConfiguration::class, WeightEntryDataFetcher::class])
-class WeightEntryDataFetcherTest {
+class WeightMeasurementDataFetcherTest {
 
     @Autowired
     lateinit var dgsQueryExecutor: DgsQueryExecutor
 
     @MockBean
-    lateinit var weightEntryRepository: WeightEntryRepository
+    lateinit var weightMeasurementRepository: WeightMeasurementRepository
 
     @BeforeEach
     fun before() {
-        Mockito.`when`(weightEntryRepository.findByUserName("testUser")).thenAnswer {
-            listOf(WeightEntry("1234", 110.0, LocalDateTime.parse("2023-04-15T10:36:19"), WeightUnit.KILO_GRAM, "testUser"))
+        Mockito.`when`(weightMeasurementRepository.findByUserName("testUser")).thenAnswer {
+            listOf(WeightMeasurement("1234", 110.0, LocalDateTime.parse("2023-04-15T10:36:19"), WeightUnit.KILO_GRAM, "testUser"))
         }
     }
     @Test

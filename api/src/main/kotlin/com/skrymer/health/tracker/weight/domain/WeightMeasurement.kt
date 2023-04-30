@@ -1,6 +1,6 @@
 package com.skrymer.health.tracker.weight.domain
 
-import com.skrymer.health.tracker.types.WeightEntryDto
+import com.skrymer.health.tracker.types.WeightMeasurementDto
 import com.skrymer.health.tracker.types.WeightUnitDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.IndexDirection
@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-@Document("weight-entry")
-class WeightEntry(
+@Document("weight-measurement")
+class WeightMeasurement(
     @Id var id: String?,
     var weight: Double,
     var fatPercentage: Double,
@@ -19,8 +19,8 @@ class WeightEntry(
     @Indexed(direction = IndexDirection.ASCENDING) var userName: String
 ) {
     companion object Factory {
-        fun fromDto(dto: WeightEntryDto): WeightEntry {
-            return WeightEntry(
+        fun fromDto(dto: WeightMeasurementDto): WeightMeasurement {
+            return WeightMeasurement(
                 dto.id,
                 dto.weight,
                 dto.fatPercentage,
@@ -30,8 +30,8 @@ class WeightEntry(
             )
         }
 
-        fun toDto(domain: WeightEntry): WeightEntryDto {
-            return WeightEntryDto(
+        fun toDto(domain: WeightMeasurement): WeightMeasurementDto {
+            return WeightMeasurementDto(
                 domain.id, domain.weight, domain.fatPercentage, WeightUnitDto.valueOf(domain.weightUnit.name), domain.timeStamp.format(
                     DateTimeFormatter.ISO_DATE_TIME
                 ), domain.userName

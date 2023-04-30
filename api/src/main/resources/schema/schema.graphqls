@@ -1,8 +1,8 @@
 type Query {
-    weightEntries(userNameFilter: String!): [WeightEntryDto]
+    weightMeasurements(userNameFilter: String!): [WeightMeasurementDto]
 }
 
-type WeightEntryDto {
+type WeightMeasurementDto {
     id: ID
     weight: Float!
     fatPercentage: Float!,

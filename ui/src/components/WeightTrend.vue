@@ -1,0 +1,29 @@
+<template>
+  <v-card class="ma-2 pa-2" elevation="6">
+    <v-card-item>
+      <v-card-title>Trending<v-icon size="large" :color="trendingUp() ? 'red-darken-2' : 'green-darken-2'" :icon="trendingUp() ? 'mdi-trending-up' : 'mdi-trending-down'"/>     </v-card-title>
+    </v-card-item>
+
+    <v-card-text>
+      {{`Your weight is trending ${trendingUp() ? 'up, eat less and/or increase energy expenditure.' : 'down, great job!'}` }}  
+    </v-card-text>
+  </v-card>
+</template>
+
+<script setup lang="ts">
+import { WeightMeasurement } from "@/types";
+
+const props = defineProps<{
+  measurements?: WeightMeasurement[];
+}>();
+
+const trendingUp = () => {
+  if (props.measurements === undefined) return 0;
+
+  const latest = props.measurements[props.measurements.length - 1].weight;
+  const  nextToLast = props.measurements[props.measurements.length - 2].weight;
+  return latest > nextToLast;
+};
+</script>
+
+<style scoped></style>
