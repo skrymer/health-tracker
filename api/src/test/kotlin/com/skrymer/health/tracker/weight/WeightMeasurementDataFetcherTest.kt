@@ -2,9 +2,10 @@ package com.skrymer.health.tracker.weight
 
 import com.netflix.graphql.dgs.DgsQueryExecutor
 import com.netflix.graphql.dgs.autoconfig.DgsAutoConfiguration
-import com.skrymer.health.tracker.weight.domain.WeightMeasurement
-import com.skrymer.health.tracker.weight.domain.WeightUnit
-import com.skrymer.health.tracker.weight.repositories.WeightMeasurementRepository
+import com.skrymer.health.tracker.api.WeightMeasurementsDataFetcher
+import com.skrymer.health.tracker.domain.WeightMeasurement
+import com.skrymer.health.tracker.domain.WeightUnit
+import com.skrymer.health.tracker.repositories.WeightMeasurementRepository
 import com.skrymer.health.tracker.types.WeightEntryDto
 import com.skrymer.health.tracker.types.WeightUnitDto
 import org.junit.jupiter.api.Test
@@ -16,7 +17,7 @@ import org.mockito.Mockito
 import org.springframework.boot.test.mock.mockito.MockBean
 import java.time.LocalDateTime
 
-@SpringBootTest(classes = [DgsAutoConfiguration::class, WeightEntryDataFetcher::class])
+@SpringBootTest(classes = [DgsAutoConfiguration::class, WeightMeasurementsDataFetcher::class])
 class WeightMeasurementDataFetcherTest {
 
     @Autowired

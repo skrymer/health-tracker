@@ -1,8 +1,8 @@
-package com.skrymer.health.tracker.weight
+package com.skrymer.health.tracker.api
 
 import com.skrymer.health.tracker.types.WeightMeasurementDto
-import com.skrymer.health.tracker.weight.domain.WeightMeasurement
-import com.skrymer.health.tracker.weight.repositories.WeightMeasurementRepository
+import com.skrymer.health.tracker.domain.WeightMeasurement
+import com.skrymer.health.tracker.repositories.WeightMeasurementRepository
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping

@@ -1,4 +1,4 @@
-package com.skrymer.health.tracker.weight.domain
+package com.skrymer.health.tracker.domain
 
 import com.skrymer.health.tracker.types.WeightMeasurementDto
 import com.skrymer.health.tracker.types.WeightUnitDto

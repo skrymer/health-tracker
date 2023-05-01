@@ -1,14 +1,14 @@
-package com.skrymer.health.tracker.weight
+package com.skrymer.health.tracker.api
 
 import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsQuery
 import com.netflix.graphql.dgs.InputArgument
-import com.skrymer.health.tracker.weight.domain.WeightMeasurement
-import com.skrymer.health.tracker.weight.repositories.WeightMeasurementRepository
+import com.skrymer.health.tracker.domain.WeightMeasurement
+import com.skrymer.health.tracker.repositories.WeightMeasurementRepository
 import com.skrymer.health.tracker.types.WeightMeasurementDto
 
 @DgsComponent
-class WeightEntryDataFetcher(val weightMeasurementRepository: WeightMeasurementRepository) {
+class WeightMeasurementsDataFetcher(val weightMeasurementRepository: WeightMeasurementRepository) {
 
     @DgsQuery
     fun weightMeasurements(@InputArgument userNameFilter : String?): List<WeightMeasurementDto> {

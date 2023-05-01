@@ -1,8 +1,13 @@
 <template>
     <v-container >
+      <v-row justify="center">
+        <v-col xs="12">
+          <h2>Weight statistics</h2>
+        </v-col>
+      </v-row>
       <v-row>
         <v-col xs="12">
-          <v-sheet class="ma-2 pa-2" elevation="6" height="500">
+          <v-sheet class="ma-2 pa-2" elevation="6" height="500">            
             <WeightMeasurementsChart v-if="result" :measurements="result.weightMeasurements" />
           </v-sheet>
         </v-col>
@@ -27,20 +32,6 @@
           <CurrentFatPercentage :measurements="result?.weightMeasurements" />
         </v-col>
       </v-row>
-      <!-- <v-row>
-        <v-col sm="3">
-          <v-sheet class="ma-2 pa-2" elevation="6">
-            <h2>Add entry</h2>
-            <AddWeightEntry @saved="saved"/>
-          </v-sheet>
-        </v-col>
-        <v-col sm="6">
-          <v-sheet class="ma-2 pa-2" elevation="6">
-            <h2>Entries</h2>
-            <WeightEntryTable v-if="result" :items="result.weightEntries" />
-          </v-sheet>
-        </v-col>
-      </v-row> -->
     </v-container>
 </template>
 
@@ -58,7 +49,7 @@ import WeightTrend from "@/components/WeightTrend.vue";
 
 const { result, refetch } = useQuery<{ weightMeasurements: WeightMeasurement[] }>(gql`
   {
-    weightMeasurements(userNameFilter: "sonni.nielsen@gmail.com") {
+    weightMeasurements(userNameFilter: "skrymer") {
       weight
       fatPercentage
       timestamp

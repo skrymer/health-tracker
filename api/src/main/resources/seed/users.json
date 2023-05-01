@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "a20cc346-dad2-40f1-a7e8-47969b277997",
+    "userName": "skrymer",
+    "email": "sonni.nielsen@gmail.com",
+    "firstName": "Sonni",
+    "lastName": "Nielsen",
+    "height": 1.95,
+    "heightUnit": "CENTIMETERS",
+    "preferredWeightUnit": "KILO_GRAM"
+  },
+  {
+    "_id": "ecd357e7-042c-4fbe-a4f7-52b1b52e593c",
+    "userName": "bugs",
+    "email": "bugs.bunny@gmail.com",
+    "firstName": "Bugs",
+    "lastName": "Bunny",
+    "height": 1.30,
+    "heightUnit": "CENTIMETERS",
+    "preferredWeightUnit": "KILO_GRAM"
+  },
+  {
+    "_id": "bb5113b2-e1b8-4429-b636-dc675981000a",
+    "userName": "daffy",
+    "email": "daffy.duck@gmail.com",
+    "firstName": "Daffy",
+    "lastName": "Duck",
+    "height": 1.25,
+    "heightUnit": "INCHES",
+    "preferredWeightUnit": "LBS"
+  }
+]

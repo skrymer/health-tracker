@@ -1,5 +1,6 @@
 type Query {
     weightMeasurements(userNameFilter: String!): [WeightMeasurementDto]
+    users(userNameFilter: String!): [UserDto]
 }
 
 type WeightMeasurementDto {
@@ -14,4 +15,20 @@ type WeightMeasurementDto {
 enum WeightUnitDto {
     KILO_GRAM,
     LBS
+}
+
+type UserDto {
+    id: ID,
+    userName: String!
+    email: String!
+    firstName: String!
+    lastName: String!
+    height: Float!
+    heightUnit: HeightUnitDto!
+    preferredWeightUnit: WeightUnitDto!
+}
+
+enum HeightUnitDto {
+    CENTIMETERS,
+    INCHES
 }
