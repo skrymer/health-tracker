@@ -2,7 +2,7 @@
   <v-card class="ma-2 pa-2" elevation="6">
     <v-card-item>
       <v-card-title>
-        <span>Median Weight Lost</span>
+        <span>Median Weight</span>
         <v-card-subtitle>Over the past seven days</v-card-subtitle>
       </v-card-title>
     </v-card-item>
@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import { WeightMeasurement } from "@/types";
+import { lastSevenMeasurements } from "@/utils/WeightUtils";
 
 const props = defineProps<{
   measurements?: WeightMeasurement[];
@@ -23,10 +24,7 @@ const props = defineProps<{
 const medianWeightLost = () => {
   if (props.measurements === undefined) return 0;
 
-  const lastSevenMeasurement = props.measurements.slice(
-    props.measurements.length - 7,
-    props.measurements.length
-  );
+  const lastSevenMeasurement = lastSevenMeasurements(props.measurements)
   const median = lastSevenMeasurement
     .map((entry) => entry.weight)
     .sort((a, b) => a - b)

@@ -5,14 +5,16 @@ Libraries used:
 * vee-validate
 * https://v4.apollo.vuejs.org/
 
+Links:
+* https://vuetifyjs.com/en/styles/colors/
+* https://vuetifyjs.com/en/styles/sizing/
+
 ## Project setup
 
 ```
 # yarn
 yarn
 
-# npm
-npm install
 
 # pnpm
 pnpm install
@@ -24,24 +26,11 @@ pnpm install
 # yarn
 yarn dev
 
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-```
-
 ### Compiles and minifies for production
 
 ```
 # yarn
 yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
 ```
 
 ### Lints and fixes files
@@ -49,12 +38,6 @@ pnpm build
 ```
 # yarn
 yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
 ```
 
 ### Customize configuration

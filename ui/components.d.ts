@@ -12,7 +12,7 @@ declare module '@vue/runtime-core' {
     AddWeightEntry: typeof import('./src/components/AddWeightEntry.vue')['default']
     Bmi: typeof import('./src/components/Bmi.vue')['default']
     CurrentWeight: typeof import('./src/components/CurrentWeight.vue')['default']
-    MedianWeightLost: typeof import('./src/components/MedianWeightLost.vue')['default']
+    MedianWeight: typeof import('./src/components/MedianWeightLost.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WeightEntriesChart: typeof import('./src/components/WeightEntriesChart.vue')['default']

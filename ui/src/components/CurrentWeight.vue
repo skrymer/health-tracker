@@ -4,7 +4,7 @@
       <v-card-title>
         <span>Current Weight</span>
       </v-card-title>
-      v-s
+      <v-card-subtitle>{{latest?.timestamp}}</v-card-subtitle>
     </v-card-item>
 
     <v-card-text>
@@ -19,6 +19,8 @@ import { WeightMeasurement } from "@/types";
 const props = defineProps<{
   measurements?: WeightMeasurement[];
 }>();
+
+const latest =  props.measurements ? props.measurements[props.measurements.length - 1] : undefined
 
 const currentWeight = () => {
   if (props.measurements === undefined) return 0;

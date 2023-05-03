@@ -1,22 +1,22 @@
 <template>
   <v-card>
     <v-layout>
-      <v-navigation-drawer expand-on-hover permanent>
+      <v-navigation-drawer expand-on-hover rail permanent>
         <v-list>
           <router-link to="/user">
             <v-list-item
               prepend-avatar="https://randomuser.me/api/portraits/men/3.jpg"
-              title="Sonni Nielsen"
-              subtitle="sonni.nielsen@gmailcom"
+              :title=" `${user.firstName} ${user.lastName}`"
+              :subtitle="user.email"
             ></v-list-item>
           </router-link>
         </v-list>
         <v-divider></v-divider>
 
         <v-list nav>
-        <router-link to="/">
-          <v-list-item prepend-icon="mdi-home" title="Home" nav></v-list-item>
-        </router-link>
+          <router-link to="/">
+            <v-list-item prepend-icon="mdi-home" title="Home" nav></v-list-item>
+          </router-link>
         </v-list>
         <v-list nav>
           <v-list-group value="Weight">
@@ -28,17 +28,9 @@
               ></v-list-item>
             </template>
 
-            <span density="compact" v-for="menu in weightMenus">
-              <router-link :to="menu.to">
-                <v-list-item
-                  :prepend-icon="menu.icon"
-                  :title="menu.title"
-                  :value="menu.value"
-                  nav
-                >
-                </v-list-item>
-              </router-link>
-            </span>
+            <router-link :to="menu.to" v-for="menu in weightMenus">
+              <v-list-item :title="menu.title" :value="menu.value" nav />
+            </router-link>
           </v-list-group>
         </v-list>
       </v-navigation-drawer>
@@ -52,18 +44,19 @@
 
 <script lang="ts" setup>
 import { RouterLink } from "vue-router";
+import { useAppStore } from "@/store/app";
+
+const {user} = useAppStore() 
 
 const weightMenus = [
   {
     to: "/weight/statistics",
     title: "Statistics",
-    icon: "mdi-chart-line",
     value: "statistics",
   },
   {
     to: "/weight/create",
     title: "Add measurement",
-    icon: "mdi-plus",
     value: "create",
   },
 ];

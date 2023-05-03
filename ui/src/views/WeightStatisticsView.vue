@@ -26,7 +26,7 @@
           <CurrentWeight :measurements="result?.weightMeasurements" />
         </v-col>
         <v-col sm="12" lg="2">
-          <MedianWeightLost :measurements="result?.weightMeasurements" />
+          <MedianWeight :measurements="result?.weightMeasurements" />
         </v-col>
         <v-col sm="12" lg="2">
           <CurrentFatPercentage :measurements="result?.weightMeasurements" />
@@ -38,7 +38,7 @@
 <script lang="ts" setup>
 import Bmi from "@/components/Bmi.vue";
 import CurrentWeight from "@/components/CurrentWeight.vue";
-import MedianWeightLost from "@/components/MedianWeightLost.vue";
+import MedianWeight from "@/components/MedianWeight.vue";
 import WeightMeasurementsChart from "@/components/WeightMeasurementsChart.vue";
 import WeightLost from "@/components/WeightLost.vue";
 import { WeightMeasurement } from "@/types/index";
