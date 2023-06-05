@@ -19,7 +19,7 @@ const props = defineProps<{
 }>();
 
 const lost = () => {
-  if (props.measurements === undefined) return 0;
+  if (props.measurements === undefined || props.measurements.length === 0) return 0;
 
   const first = props.measurements[0].weight;
   const last = props.measurements[props.measurements.length - 1].weight;

@@ -2,7 +2,7 @@
   <v-card class="ma-2 pa-2" elevation="6">
     <v-card-item>
       <v-card-title>
-        <span>BMI</span>
+        <span>Current BMI</span>
       </v-card-title>
     </v-card-item>
 
@@ -20,7 +20,7 @@ const props = defineProps<{
 }>();
 
 const bmi = () => {
-  if (props.measurements === undefined) return 0;
+  if (props.measurements === undefined || props.measurements.length === 0) return 0;
 
   const latest = props.measurements[props.measurements.length - 1].weight;
   return (latest / Math.pow(1.95, 2)).toFixed(2); // TODO calculate based on user values

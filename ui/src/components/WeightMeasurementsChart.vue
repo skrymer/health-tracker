@@ -20,6 +20,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { watch } from "vue";
 import { Line } from "vue-chartjs";
 
 ChartJS.register(
@@ -33,6 +34,11 @@ ChartJS.register(
 );
 
 const props = defineProps<{measurements: WeightMeasurement[]}>()
+
+watch(props.measurements, () => {
+  console.log(`Chart: measurements changed`);
+  
+})
 
 const chartData = {
       labels: props.measurements?.map((entry) => entry.timestamp.substring(0, entry.timestamp.indexOf('T'))),

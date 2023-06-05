@@ -15,22 +15,18 @@
 
 <script setup lang="ts">
 import { WeightMeasurement } from "@/types";
-import { lastSevenMeasurements } from "@/utils/WeightUtils";
+import { medianWeight, lastSevenMeasurements } from "@/utils/WeightUtils";
 
 const props = defineProps<{
   measurements?: WeightMeasurement[];
 }>();
 
 const medianWeightLost = () => {
-  if (props.measurements === undefined) return 0;
-
-  const lastSevenMeasurement = lastSevenMeasurements(props.measurements)
-  const median = lastSevenMeasurement
-    .map((entry) => entry.weight)
-    .sort((a, b) => a - b)
-    .splice(4, 4)[0];
-
-  return median.toFixed(2);
+  if (props.measurements === undefined) {
+    return 0;
+  }
+  
+  return medianWeight(lastSevenMeasurements(props.measurements)).toFixed(2);
 };
 </script>
 

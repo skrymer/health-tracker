@@ -1,5 +1,5 @@
 // Utilities
-import { User } from "@/types";
+import { User, WeightMeasurement } from "@/types";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -14,9 +14,15 @@ export const useAppStore = defineStore("app", () => {
     preferredWeightUnit: "KILO_GRAM",
   });
 
+  const weightMeasurements = ref<WeightMeasurement[]>([])
+
   const updateUser = (newUser: User) => {
     user.value = newUser;
   };
 
-  return { user, updateUser };
+  const updateWeightMeasurements = (newMeasurements: WeightMeasurement[]) => {
+    weightMeasurements.value = newMeasurements
+  }
+
+  return { user, updateUser, weightMeasurements, updateWeightMeasurements };
 });

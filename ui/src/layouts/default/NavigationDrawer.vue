@@ -6,7 +6,7 @@
           <router-link to="/user">
             <v-list-item
               prepend-avatar="https://randomuser.me/api/portraits/men/3.jpg"
-              :title=" `${user.firstName} ${user.lastName}`"
+              :title="`${user.firstName} ${user.lastName}`"
               :subtitle="user.email"
             ></v-list-item>
           </router-link>
@@ -35,8 +35,12 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-main class="h-screen">
-        <router-view />
+      <v-main >
+        <v-container>
+          <v-responsive class="d-flex align-center">
+            <router-view />
+          </v-responsive>
+        </v-container>
       </v-main>
     </v-layout>
   </v-card>
@@ -46,7 +50,7 @@
 import { RouterLink } from "vue-router";
 import { useAppStore } from "@/store/app";
 
-const {user} = useAppStore() 
+const { user } = useAppStore();
 
 const weightMenus = [
   {

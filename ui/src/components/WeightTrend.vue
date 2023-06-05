@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import { WeightMeasurement } from "@/types";
+import { lastSevenMeasurements, medianWeight } from "@/utils/WeightUtils";
 
 const props = defineProps<{
   measurements?: WeightMeasurement[];
@@ -20,9 +21,13 @@ const props = defineProps<{
 const trendingUp = () => {
   if (props.measurements === undefined) return 0;
 
-  const latest = props.measurements[props.measurements.length - 1].weight;
-  const  nextToLast = props.measurements[props.measurements.length - 2].weight;
-  return latest > nextToLast;
+  const thisWeeksMeasurements = lastSevenMeasurements(props.measurements)
+  const lastWeeksMeasurements = lastSevenMeasurements(props.measurements.slice(0, props.measurements.length - 7))
+  
+  const thisWeeksMedian = medianWeight(thisWeeksMeasurements);
+  const lastWeeksMedian = medianWeight(lastWeeksMeasurements)
+  
+  return thisWeeksMedian > lastWeeksMedian;
 };
 </script>
 

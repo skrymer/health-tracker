@@ -12,8 +12,18 @@
                 name="userName"
                 disabled
               ></v-text-field>
-              <v-text-field v-model="firstName.value.value" label="First Name" name="firstName"></v-text-field>
-              <v-text-field v-model="lastName.value.value" label="Last Name" name="lastName"></v-text-field>
+              <v-text-field
+                v-model="firstName.value.value"
+                label="First Name"
+                name="firstName"
+                :error-messages="errors.firstName"
+              ></v-text-field>
+              <v-text-field
+                v-model="lastName.value.value"
+                label="Last Name"
+                name="lastName"
+                :error-messages="errors.lastName"
+              ></v-text-field>
             </v-expansion-panel-text>
           </v-expansion-panel>
 
@@ -28,7 +38,7 @@
                 ]"
                 item-title="text"
                 item-value="key"
-                v-model="weightUnit.value.value"
+                v-model="preferredWeightUnit.value.value"
               ></v-select>
               <v-select
                 label="Height Unit"
@@ -51,6 +61,7 @@
                 name="email"
                 placeholder="daffy.duck@fake.com"
                 v-model="email.value.value"
+                :error-messages="errors.email"
               ></v-text-field>
             </v-expansion-panel-text>
           </v-expansion-panel>
@@ -77,20 +88,30 @@
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from "@/store/app";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
 
 const validationSchema = yup.object({
-  weight: yup.number().required(),
-  fatPercentage: yup.number().required(),
-  timestamp: yup.date().required(),
+  userName: yup.string().required(),
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  email: yup.string().email().required(),
+  heightUnit: yup.string().required(),
+  preferredWeightUnit: yup.string().required(),
+  dob: yup.date().required(),
 });
 
-const { handleSubmit, errors } = useForm({ validationSchema, initialValues: {userName: 'skrymer'} });
+const { user } = useAppStore();
+
+const { handleSubmit, errors } = useForm({
+  validationSchema,
+  initialValues: { ...user },
+});
 
 const submit = handleSubmit((values) => {
   console.log(values);
-  
+
   // fetch("/api/weight/measurement", {
   //   method: "POST",
   //   headers: new Headers({ "content-type": "application/json" }),
@@ -107,9 +128,9 @@ const userName = useField("userName");
 const firstName = useField("firstName");
 const lastName = useField("lastName");
 const heightUnit = useField("heightUnit");
-const weightUnit = useField("weightUnit");
+const preferredWeightUnit = useField("preferredWeightUnit");
 const email = useField("email");
-const dob = useField("dob")
+const dob = useField("dob");
 </script>
 
 <style scoped></style>

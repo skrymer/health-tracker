@@ -28,5 +28,15 @@
     "height": 1.25,
     "heightUnit": "INCHES",
     "preferredWeightUnit": "LBS"
+  },
+  {
+    "_id": "d0e8ff5f-1f69-42f3-98f1-9a4763918a05",
+    "userName": "angela.jane.nielsen@gmail.com",
+    "email": "angela.jane.nielsen@gmail.com",
+    "firstName": "Angela",
+    "lastName": "Nielsen",
+    "height": 1.75,
+    "heightUnit": "CENTIMETERS",
+    "preferredWeightUnit": "KILO_GRAM"
   }
 ]

@@ -15,17 +15,17 @@
 
 <script setup lang="ts">
 import { WeightMeasurement } from "@/types";
+import {last} from "@/utils/WeightUtils"
 
 const props = defineProps<{
   measurements?: WeightMeasurement[];
 }>();
 
 const currentFatPercentage = () => {
-  if (props.measurements === undefined) return 0;
+  if (props.measurements === undefined || props.measurements.length === 0) return 0;
 
-  const latestMeasurement =
-    props.measurements[props.measurements.length - 1].fatPercentage;
-  return latestMeasurement.toFixed(2);
+  const latestMeasurement = last(props?.measurements);
+  return latestMeasurement?.fatPercentage.toFixed(2);
 };
 </script>
 

@@ -710,6 +710,22 @@
     "timeStamp": "2023-04-05T00:00:00",
     "weightUnit": "KILO_GRAM",
     "userName": "skrymer"
+  },
+  {
+    "_id": "1159ad4a-d9d6-40ec-a8c6-f45e337ac3b2",
+    "weight": 104.8,
+    "fatPercentage" : 26.43,
+    "timeStamp": "2023-04-05T00:00:00",
+    "weightUnit": "KILO_GRAM",
+    "userName": "angela.jane.nielsen@gmail.com"
+  },
+  {
+    "_id": "cc564694-987a-4edd-a451-aa41b1b312be",
+    "weight": 104.8,
+    "fatPercentage" : 26.43,
+    "timeStamp": "2023-04-05T00:00:00",
+    "weightUnit": "KILO_GRAM",
+    "userName": "angela.jane.nielsen@gmail.com"
   }
 ]
 
