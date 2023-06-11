@@ -25,13 +25,50 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      loginByOkta(email: string, password: string): Chainable<void>
+    }
+  }
+}
+
+// cypress/support/auth-provider-commands/okta.ts
+// Okta
+const loginToOkta = (username: string, password: string) => {
+  Cypress.log({
+    displayName: 'OKTA LOGIN',
+    message: [`🔐 Authenticating | ${username}`],
+    autoEnd: false,
+  })
+
+  cy.visit('/')
+  cy.origin(
+    Cypress.env('okta_domain'),
+    { args: { username, password } },
+    ({ username, password }) => {
+      cy.get('input[name="identifier"]').type(username)
+      cy.get('input[name="credentials.passcode"]').type(password, {
+        log: false,
+      })
+      cy.get('[type="submit"]').click()
+    }
+  )
+
+  cy.get('[data-test="sidenav-username"]').should('contain', username)
+}
+// right now our custom command is light. More on this later!
+Cypress.Commands.add('loginByOkta', (username: string, password: string) => {
+  cy.session(
+    `okta-${username}`,
+    () => {
+      return loginToOkta(username, password)
+    },
+    {
+      validate() {
+        cy.visit('/')
+        cy.get('[data-test="sidenav-username"]').should('contain', username)
+      },
+    }
+  )
+})
