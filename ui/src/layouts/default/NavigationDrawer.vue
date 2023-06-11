@@ -3,20 +3,22 @@
     <v-layout>
       <v-navigation-drawer expand-on-hover rail permanent>
         <v-list>
-          <router-link to="/user">
-            <v-list-item
-              prepend-avatar="https://randomuser.me/api/portraits/men/3.jpg"
-              :title="`${user.firstName} ${user.lastName}`"
-              :subtitle="user.email"
-            ></v-list-item>
-          </router-link>
+          <v-list-item
+            prepend-avatar="https://randomuser.me/api/portraits/men/3.jpg"
+            :title="`${user.firstName} ${user.lastName}`"
+            :subtitle="user.email"
+            to="/user"
+          ></v-list-item>
         </v-list>
         <v-divider></v-divider>
 
         <v-list nav>
-          <router-link to="/">
-            <v-list-item prepend-icon="mdi-home" title="Home" nav></v-list-item>
-          </router-link>
+          <v-list-item
+            prepend-icon="mdi-home"
+            title="Home"
+            to="/"
+            nav
+          ></v-list-item>
         </v-list>
         <v-list nav>
           <v-list-group value="Weight">
@@ -28,14 +30,18 @@
               ></v-list-item>
             </template>
 
-            <router-link :to="menu.to" v-for="menu in weightMenus">
-              <v-list-item :title="menu.title" :value="menu.value" nav />
-            </router-link>
+            <v-list-item
+              :to="menu.to"
+              v-for="menu in weightMenus"
+              :title="menu.title"
+              :value="menu.value"
+              nav
+            />
           </v-list-group>
         </v-list>
       </v-navigation-drawer>
 
-      <v-main >
+      <v-main>
         <v-container>
           <v-responsive class="d-flex align-center">
             <router-view />
